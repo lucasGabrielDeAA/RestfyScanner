@@ -11,6 +11,9 @@
 
   // For Android's environment
   yarn android
+
+  // For IOS's environment
+  cd ios/ && pod install && cd .. && yarn ios
 ```
 
 **Result**
@@ -23,4 +26,4 @@
 
 ### Note: You need to connect a Android's device with USB depuration enabled, to run the application
 
-### Note: The application was only tested in Android's device, so it won't runs on IOS's devices
+### Note: The application was only tested in Android's device
