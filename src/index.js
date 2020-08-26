@@ -1,46 +1,20 @@
-import React, {useRef, useCallback, useState} from 'react';
-import {Text} from 'react-native';
+import React from 'react';
+import 'react-native-gesture-handler';
+import {StatusBar} from 'react-native';
 
-import {Buffer} from 'buffer';
-import {RNCamera} from 'react-native-camera';
+import {NavigationContainer} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import ScanAreaPNG from './assets/images/scan-area.png';
-
-import {Container, Camera, ScanImage, Button, ButtonLabel} from './styles';
+import Routes from './routes';
 
 export default function App() {
-  const cameraRef = useRef(null);
-
-  const [scan, setScan] = useState(false);
-  const [code, setCode] = useState(null);
-
-  const handleRead = useCallback((info) => {
-    const {data} = info;
-
-    setCode(String(new Buffer(data).toString('base64')));
-    console.log(String(new Buffer(data).toString('base64')));
-    setScan(false);
-  }, []);
-
   return (
-    <Container>
-      {scan ? (
-        <Camera
-          captureAudio={false}
-          ref={cameraRef}
-          type={RNCamera.Constants.Type.back}
-          onBarCodeRead={(e) => handleRead(e)}>
-          <ScanImage source={ScanAreaPNG} />
-        </Camera>
-      ) : (
-        <>
-          <Text>{code}</Text>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
 
-          <Button onPress={() => setScan(true)}>
-            <ButtonLabel>Scan QRCode</ButtonLabel>
-          </Button>
-        </>
-      )}
-    </Container>
+        <Routes />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
