@@ -161,7 +161,6 @@
 				CDD76D45F8E008C650987431 /* Pods-RestfyScanner-tvOSTests.debug.xcconfig */,
 				BFDF959896C9F637CC4BA3AD /* Pods-RestfyScanner-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
